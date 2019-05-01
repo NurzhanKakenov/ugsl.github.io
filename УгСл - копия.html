@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Угадай слово!</title>
+    </head>
+
+    <body>
+        <h1>Угадай слово!</h1>
+
+        <script>
+
+            var words = ["программа", "программирование", "прикол", "сайт"];
+            var word = words[Math.floor(Math.random() * words.length)];
+            var answerArray = [];
+            var remainingLetters = word.length;
+
+            for (var i = 0; i < word.length; i++)
+            {
+                answerArray[i] = "_";
+            }
+
+            while (remainingLetters > 0)
+            {
+                alert(answerArray.join(" "));
+                var guess = prompt("Угадай букву");
+
+                if (guess === null)
+                {
+                    break;
+                }
+
+                else if (guess.length !== 1)
+                {
+                    alert("введите одну букву.");
+                }
+
+                else 
+                {
+                    for (var j = 0; j < word.length; j++)
+                    {
+                        if (word[j] === guess) 
+                        {
+                            answerArray[j] = guess;
+                            remainingLetters--;
+                        }
+                    }
+                }
+            }
+            alert(answerArray.join(" "));
+            alert("было загадано слово " + word);
+        </script>
+    </body>
+</html>
